@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <title>North Carolina College Lineup</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      window.onload=closingCode;
+      function closingCode(){
+      console.log("tSETSTS");
+      if (typeof(localStorage.getItem('length')) == 'undefined') {
+              localStorage.setItem('length',17);
+}
+
+      console.log(localStorage.getItem('index'));
+      console.log(localStorage.getItem('length'));
+      if(parseInt(localStorage.getItem("index"))+1> parseInt(localStorage.getItem('length'))){
+
+        console.log("JELLO");
+        console.log(localStorage.getItem("data")[parseInt(localStorage.getItem("index"))]);
+        localStorage.clear();
+        localStorage.setItem("index", 0);
+        localStorage.setItem("title", "East Carolina University");
+        localStorage.setItem("logo", "https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/East_Carolina_Pirates_logo.svg/400px-East_Carolina_Pirates_logo.svg.png");
+        localStorage.setItem('color1', data[e.selectedIndex].color1);
+        localStorage.setItem('color2', data[e.selectedIndex].color2);
+      }        return null;
+}
+    </script>
+    <style>
+      ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      }
+      li {
+      float: left;
+      }
+      li a {
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      }
+    </style>
+    {% block extrajs %}{% endblock%}
+    <title>{% block title %}{% endblock %} - School Colors</title>
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand ">University Colors</a>
+        </div>
+        <ul class="nav navbar-nav bcolor">
+          <li {% block nav_index %}{% endblock %}><a href="/">Introduction</a></li>
+          <li {% block nav_select_add %}{% endblock %}><a href="/select_add">Select/Add</a></li>
+          <li {% block nav_schools %}{% endblock %}><a href="/schools">Schools</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div class= "format">
+      <div class= "Members bcolor">
+        <h4 >
+          <p class= "Member bcolor" style="padding-left: 5px;">Team Members: <br />Nelson Grimes<br />Justin Regel <br />Jameson Andrus
+          <p/>
+        </h4>
+        {% block member %}{% endblock %}
+      </div>
+      <div class = "pagecontent">
+        {% block page %}{% endblock %}
+      </div>
+      <div class = "bar bcolor"></div>
+    </div>
+    <p id="color1"></p>
+    <p id="color2"></p>
+    <script>
+
+      if(!localStorage.getItem('color1')) {
+        localStorage.setItem('color1', '#5B2C6F');
+      }
+      var x = document.getElementById("color1");
+      x.innerHTML = "</p><style>.color{color: "+localStorage.getItem('color1')+"} .bcolor{ background-color: "+localStorage.getItem('color1')+";}.bcolor2{background-color:"+localStorage.getItem('color1')+"}</style<p>";
+      if(!localStorage.getItem('color2')) {
+        localStorage.setItem('color2', '#FFDF00');
+      }
+      var y = document.getElementById("color2");
+      y.innerHTML = "</p><style>.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus {color: "+localStorage.getItem('color1')+"; background-color: "+localStorage.getItem('color2') +";} .nav.navbar-nav li a {color: "+localStorage.getItem('color2')+";</style>}<p>";
+
+  console.log(data.length);
+
+    </script>
+    <style>
+      .bar{
+      float: left;
+      height: 1500px;
+      width: 25%;
+      }
+      .Members{
+      float: left;
+      height: 1500px;
+      width: 25%;
+      color: white
+      }
+      .Member{
+      border-width: 25%
+      }
+      .pagecontent{
+      text-align: center;
+      margin: auto;
+      float: left;
+      width: 50%
+      }
+    </style>
+  </body>
+</html>

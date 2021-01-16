@@ -1,0 +1,104 @@
+[
+	{
+		"schoolName": "East Carolina University",
+		"color1": "#5B2C6F",
+		"color2": "#FFDF00",
+		"logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/East_Carolina_Pirates_logo.svg/400px-East_Carolina_Pirates_logo.svg.png"
+	},
+	{
+		"schoolName": "UNC Chapel Hill",
+		"color1": "#4B9CD3",
+		"color2": "#FFFFFF",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/d/d7/North_Carolina_Tar_Heels_logo.svg"
+	},
+	{
+		"schoolName": "Appalachian State University",
+		"color1": "#222222",
+		"color2": "#FFCC00",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/appalachian-state-mountaineers-logo.png"
+	},
+	{
+		"schoolName": "Elizabeth City State University",
+		"color1": "#264391",
+		"color2": "#FFFFFF",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-2/elizabeth-city-state-vikings-logo.png"
+	},
+	{
+		"schoolName": "Fayetteville State University",
+		"color1": "#2E63B6",
+		"color2": "#FFFFFF",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-2/fayetteville-state-broncos-logo.png"
+	},
+	{
+		"schoolName": "North Carolina A&T State University",
+		"color1": "#004684",
+		"color2": "#FDB927",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/north-carolina-at-aggies-logo.png"
+	},
+	{
+		"schoolName": "North Carolina Central University",
+		"color1": "#862633",
+		"color2": "#898D8D",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/north-carolina-central-eagles-logo.png"
+	},
+	{
+		"schoolName": "UNC Asheville",
+		"color1": "#003DA5",
+		"color2": "#FFFFFF",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/unc-asheville-bulldogs-logo.png"
+	},
+	{
+		"schoolName": "UNC Charlotte",
+		"color1": "#006940",
+		"color2": "#FFFFFF",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/charlotte-49ers-logo.png"
+	},
+	{
+		"schoolName": "UNC Greensboro",
+		"color1": "#0F2044",
+		"color2": "#FFB71B",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/unc-greensboro-spartans-logo.png"
+	},
+	{
+		"schoolName": "UNC Pembroke",
+		"color1": "#12100E",
+		"color2": "#856C41",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-2/unc-pembroke-braves-logo.png"
+	},
+	{
+		"schoolName": "UNC Wilmington",
+		"color1": "#003366",
+		"color2": "#FFD600",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/unc-wilmington-seahawks-logo.png"
+	},
+	{
+		"schoolName": "UNC School of the Arts",
+		"color1": "#000000",
+		"color2": "#FFFFFF",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/UNCSA_Official_Seal.png"
+	},
+	{
+		"schoolName": "North Carolina State University",
+		"color1": "#CC0000",
+		"color2": "#808080",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/North_Carolina_State_University_Athletic_logo.svg"
+	},
+	{
+		"schoolName": "Western Carolina University",
+		"color1": "#592C88",
+		"color2": "#B9975B",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-1/western-carolina-catamounts-logo.png"
+	},
+	{
+		"schoolName": "Winston-Salem State University",
+		"color1": "#DC1A32",
+		"color2": "#FFFFFF",
+		"logo": "https://cdn.usteamcolors.com/images/ncaa/division-2/wssu-rams-logo.png"
+	},
+	{
+		"schoolName": "North Carolina School of Science and Mathematics",
+		"color1": "#808080",
+		"color2": "#0000FF",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/1/16/North_Carolina_School_of_Science_and_Mathematics_Logo.jpg"
+	}
+]

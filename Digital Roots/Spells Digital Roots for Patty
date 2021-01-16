@@ -1,0 +1,70 @@
+Spells Digital Roots for Patty
+
+- https://www.d20pfsrd.com/feats/general-feats/arithmancy/
+
+-	webscrape with Python use jupyter notebook
+-	url = https://aonprd.com/Spells.aspx?Class=All
+-	list of spells kept in <tbody></tbody> tag
+- 	spells kept in <tr></tr> tag
+-	to get to spell name (I think):
+
+
+	<span>
+		<b>
+			<a> SPELL NAME IS IN HERE </a>
+		</b>
+	</span>
+
+
+
+	psuedo code for scraping spell Names:
+
+	//assuming we're in <tbody>
+
+	//look in <tr>
+	for spellObj in <tr> {
+		for span in <span> {
+			for b in <b> {
+				for a in <a> {
+					spellName = (this).text
+					write spellName to text file
+					//continue with each <tr>
+				}
+			}
+		}
+	}
+
+
+- do Digital root calculations for all Spells
+- write spellName:digitalRootValue to CSV file
+- output csv file to Excel
+- send to Patty
+
+Digital Root Calculations
+Numerical Value    Associated Letters
+1    a, j, s
+2    b, k, t
+3    c, l, u
+4    d, m, v
+5    e, n, w
+6    f, o, x
+7    g, p, y
+8    h, q, z
+9    i, r
+
+
+Digital Root =  sum of the value of each letter
+
+if the value is > 9
+sum both digits
+
+
+EX: Spell Name: "Hello"
+
+(H)+(e)+(l)+(l)+(o)
+ 8 + 5 + 3 + 3 + 6
+ = 25
+
+ 2 + 5 = 7 
+
+ Digital Root =  {Hello: 7}

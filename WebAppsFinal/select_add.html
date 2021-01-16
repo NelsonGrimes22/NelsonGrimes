@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block extrajs %}
+<!-- You should place your js files here -->
+<script src="/static/js/colorchange.js"></script>
+{% endblock%}
+{% block title %}Select/Add{% endblock %}
+{% block nav_select_add %}class="active"{% endblock %}
+{% block content %}
+{% endblock %}
+{% block member %} {% block logo %}
+<div>
+  <p class="members" style="width: 50%" id="currentLogo">
+  <p/>
+</div>
+{% endblock %}{% endblock %}
+{% block page %}
+<div class="wrapper">
+  <div>
+    <h2 class="color" style="text-align:center;">
+    Add a University/College
+    <h2>
+  </div>
+  <div>
+    <h4 style="color: red;">
+      <label visibility="hidden" id="error_label">One or More of the Inputs were Invalid</label>
+    </h4>
+  </div>
+  <div class="form" style="padding-left: 10px">
+    <form id="schoolForm" action="http://127.0.0.1:5000/add_school" method="post">
+      <h5>
+      <label for="schoolName">School Name:</label><br>
+      <input type="text" id="schoolName" name="schoolName"><br>
+      <label for="C1">Color #1 in Hex (Darker Color Required):</label><br>
+      <input type="text" id="C1" name="C1" style='text-transform:uppercase'><br>
+      <label for="C2">Color #2: in Hex </label ><br>
+      <input type="text" id="C2" name="C2" style='text-transform:uppercase'><br>
+      <label for="logo">School Logo Link:</label><br>
+      <input type="text" id="logo" name="logo" ><br>
+      <input type="submit" value="Submit" name="addSchool">
+      </h5>      
+    </form>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2 class="color" style="text-align:center;">
+    Select a University/College
+    <h2>
+  </div>
+  <div>
+    <form method="post">
+      <select style="height: 35px" class="mySelect" id="mySelect" name="select"></select>
+      <button style="height: 35px"onclick="change()">Submit</button>
+    </form>
+  </div>
+</div>
+<style>
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  .logo{
+  vertical-align:top; 
+  max-width: 50%;
+  }
+  .mySelect{
+  width: 80%;
+  height: 30px;
+  }
+  .form{
+  text-align: center
+  }
+</style>
+<script>
+
+  var input_error_flag = '{{error_status}}';
+  var error_label = document.getElementById("error_label");
+
+  if (input_error_flag == 1) {
+    console.log("error visible")
+    error_label.style.visibility= "visible";
+  } else {
+    console.log("error hidden")
+    error_label.style.visibility= "hidden";
+  }
+
+  var data = '{{data}}'
+  var replace = data.replace(new RegExp('&#34;', 'g'), "\"");
+  var data = JSON.parse(replace);
+  localStorage.setItem('data', data);
+  localStorage.setItem('length', data.length);
+
+  
+  if(!localStorage.getItem('index')){
+    localStorage.setItem('index', 0);
+  }
+  
+  var img = document.createElement('img'); 
+  if (typeof(localStorage.getItem('logo')) != 'undefined') {
+    img.src = localStorage.getItem('logo');
+  } else {
+    img.src = data[0].logo;
+  }
+
+  img.style= "width: 100%";
+  console.log(localStorage.getItem('index'))
+  document.getElementById('currentLogo').appendChild(img);
+  
+  function change(){
+    console.log(localStorage.getItem('index'))
+    var e = document.getElementById("mySelect");
+    localStorage.setItem('index', e.selectedIndex);
+    localStorage.setItem('color1', data[e.selectedIndex].color1);
+    localStorage.setItem('color2', data[e.selectedIndex].color2);
+    localStorage.setItem('logo', data[e.selectedIndex].logo);
+    localStorage.setItem('title', data[e.selectedIndex].schoolName);
+  
+    changeColors(data[e.selectedIndex].color1);
+    location.reload();  
+  }
+  
+  function addSelect(){
+    var x = document.getElementById("mySelect");
+  
+    for(var i = 0; i<data.length;i++){
+      var option = document.createElement("option");
+      option.text = data[i].schoolName;
+      x.add(option);
+    }
+  }
+  window.onload=addSelect;
+  
+  function addSchool() { 
+    console.log("in addSchool")
+  
+    //Adds School Name to Select List
+    if(document.getElementById("schoolName").value)
+    {
+      var x = document.getElementById("mySelect");
+      var option = document.createElement("option");
+      option.text = document.getElementById("schoolName").value
+      x.add(option)
+    
+      var schoolJSONData = {
+        "SchoolName": document.getElementById("schoolName").value,
+        "Color1": document.getElementById("C1").value,
+        "Color2": document.getElementById("C2").value,
+        "Logo": document.getElementById("logo").value
+      }
+  }
+  console.log(schoolJSONData)
+    // Add schoolJSONData to database!!!
+  }
+  
+</script>
+{% endblock %}
