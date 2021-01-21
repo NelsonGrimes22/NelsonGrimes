@@ -1,0 +1,65 @@
+body {
+    background: linear-gradient(to right, #953abe, #ce9e1b);
+    min-height: 100vh
+}
+.text-gray {
+    color: #aaa
+}
+/* img {
+    height: 182px;
+    width: 268px
+} */
+* {
+    box-sizing: border-box;
+}
+.box {
+width: 75%;
+text-align:center;
+position: absolute;
+top: 20%;
+}
+
+/* Style the search field */
+form.box input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 70%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.box button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #953abe;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.box button:hover {
+    background: #662783;
+}
+
+/* Clear floats */
+form.box::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+ul {
+    width: 75%;
+    text-align:left;
+    position: absolute;
+    top: 30%; 
+}
+a {
+    color: #ffffff;
+    padding-left: 10px;
+}

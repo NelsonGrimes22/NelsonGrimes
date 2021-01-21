@@ -8,77 +8,9 @@
             <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
             <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
             <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+            <link rel="stylesheet" href="styles.css">
             <script type='text/javascript'></script>
-            <style>
-            /* Server can't find css file so typing in on html */
 
-  
-            body {
-                background: linear-gradient(to right, #953abe, #ce9e1b);
-                min-height: 100vh
-            }
-            .text-gray {
-                color: #aaa
-            }
-            /* img {
-                height: 182px;
-                width: 268px
-            } */
-            * {
-                box-sizing: border-box;
-            }
-            .box {
-            width: 75%;
-            text-align:center;
-            position: absolute;
-            top: 20%;
-            }
-  
-            /* Style the search field */
-            form.box input[type=text] {
-                padding: 10px;
-                font-size: 17px;
-                border: 1px solid grey;
-                float: left;
-                width: 70%;
-                background: #f1f1f1;
-            }
-            
-            /* Style the submit button */
-            form.box button {
-                float: left;
-                width: 20%;
-                padding: 10px;
-                background: #953abe;
-                color: white;
-                font-size: 17px;
-                border: 1px solid grey;
-                border-left: none; /* Prevent double borders */
-                cursor: pointer;
-            }
-            
-            form.box button:hover {
-                background: #662783;
-            }
-            
-            /* Clear floats */
-            form.box::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
-            ul {
-                width: 75%;
-                text-align:left;
-                position: absolute;
-                top: 30%; 
-            }
-            a {
-                color: #ffffff;
-                padding-left: 10px;
-            }
-            </style>
         </head>
             <body oncontextmenu='return false' class='snippet-body'>
                 <div class="container py-5">
@@ -95,47 +27,10 @@
 
                         </ul>
                         <script>
-                            //Server can't find js file so typing in on html
-                            const form = document.querySelector('form');
-                            const searchInput = document.querySelector('input');
-                            const searchURL = 'http://localhost:3000/search/';
-                            const resultsList = document.querySelector('#results');
-                            form.addEventListener('submit', formSubmitted);
 
-                            function formSubmitted(event){
-                                event.preventDefault();
-
-                                const searchTerm = searchInput.value;
-                                getSearchResults(searchTerm)
-                                .then(showResults);
-                            }
-
-                            function getSearchResults(searchTerm) {
-                                  return fetch(`${searchURL}${searchTerm}`)
-                                 .then(res => res.json());
-  
-                            }
-
-                            function showResults(results) {
-                                console.log('here');
-                                console.log(results);
-                                results.forEach(movie => {
-                                    const li = document.createElement('li');
-                                    const img = document.createElement('img');
-                                    img.src = movie.image;
-                                    li.appendChild(img);
-
-                                    const a = document.createElement('a');
-                                    a.textContent= movie.title;
-                                    a.href = '/movie.html?imdbID=' + movie.imdbID
-                                    li.appendChild(a);;
-                                    resultsList.appendChild(li);
-                                });
-                            }
-
-                                //TO DO
-                                //DISPLAY SEARCH RESULTS ON SEARCH PAGE
                         </script>
+                        <script  type="text/javascript" src="app.js"></script>
+
                     </div>
                 </div>
             </div>
