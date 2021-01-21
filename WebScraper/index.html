@@ -20,10 +20,10 @@
             .text-gray {
                 color: #aaa
             }
-            img {
+            /* img {
                 height: 182px;
                 width: 268px
-            }
+            } */
             * {
                 box-sizing: border-box;
             }
@@ -40,7 +40,7 @@
                 font-size: 17px;
                 border: 1px solid grey;
                 float: left;
-                width: 75%;
+                width: 70%;
                 background: #f1f1f1;
             }
             
@@ -49,7 +49,7 @@
                 float: left;
                 width: 20%;
                 padding: 10px;
-                background: #2196F3;
+                background: #953abe;
                 color: white;
                 font-size: 17px;
                 border: 1px solid grey;
@@ -58,7 +58,7 @@
             }
             
             form.box button:hover {
-                background: #0b7dda;
+                background: #662783;
             }
             
             /* Clear floats */
@@ -68,6 +68,16 @@
                 display: table;
             }
 
+            ul {
+                width: 75%;
+                text-align:left;
+                position: absolute;
+                top: 30%; 
+            }
+            a {
+                color: #ffffff;
+                padding-left: 10px;
+            }
             </style>
         </head>
             <body oncontextmenu='return false' class='snippet-body'>
@@ -81,30 +91,50 @@
                             <input type="text" placeholder="Search for a movie" name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
+                        <ul class="list-group" id="results">
+
+                        </ul>
                         <script>
                             //Server can't find js file so typing in on html
                             const form = document.querySelector('form');
                             const searchInput = document.querySelector('input');
                             const searchURL = 'http://localhost:3000/search/';
+                            const resultsList = document.querySelector('#results');
                             form.addEventListener('submit', formSubmitted);
 
                             function formSubmitted(event){
                                 event.preventDefault();
 
                                 const searchTerm = searchInput.value;
-                                getSearchResults(searchTerm);
+                                getSearchResults(searchTerm)
+                                .then(showResults);
+                            }
 
-                                function getSearchResults(searchTerm) {
-                                    return fetch(`${searchURL}${searchTerm}`)
-                                    .then(res => res.json())
-                                    .then(results => {
-                                        console.log(results);
-                                    })
-                                }
+                            function getSearchResults(searchTerm) {
+                                  return fetch(`${searchURL}${searchTerm}`)
+                                 .then(res => res.json());
+  
+                            }
+
+                            function showResults(results) {
+                                console.log('here');
+                                console.log(results);
+                                results.forEach(movie => {
+                                    const li = document.createElement('li');
+                                    const img = document.createElement('img');
+                                    img.src = movie.image;
+                                    li.appendChild(img);
+
+                                    const a = document.createElement('a');
+                                    a.textContent= movie.title;
+                                    a.href = '/movie.html?imdbID=' + movie.imdbID
+                                    li.appendChild(a);;
+                                    resultsList.appendChild(li);
+                                });
+                            }
 
                                 //TO DO
                                 //DISPLAY SEARCH RESULTS ON SEARCH PAGE
-}
                         </script>
                     </div>
                 </div>
