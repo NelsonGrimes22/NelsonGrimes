@@ -98,8 +98,7 @@ function getMovie(imdbID) {
                 summary: $summary,
                 directors: $directors,
                 actors: $actors,
-                image: $img,
-                rating: $rating
+                image: $img
             };
 
 

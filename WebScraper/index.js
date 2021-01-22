@@ -21,6 +21,13 @@ app.get('/movie/:imdbID', (req, res) => {
             res.json(movie);
         })
 });
+app.get('/movie.html', (req, res) => {
+    res.sendFile('movie.html', { root: __dirname })
+});
+app.get('/movie.js', (req, res) => {
+    res.sendFile('movie.js', { root: __dirname })
+});
+
 
 app.get('/search/:title', (req, res) => {
     scraper.searchMovies(req.params.title)
