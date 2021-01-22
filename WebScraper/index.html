@@ -1,40 +1,42 @@
 <!doctype html>
-    <html>
-        <head>
-            <meta charset='utf-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1'>
-            <title>IMDB Search</title>
-            <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-            <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-            <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-            <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-            <link rel="stylesheet" href="styles.css">
-            <script type='text/javascript'></script>
+<html>
 
-        </head>
-            <body oncontextmenu='return false' class='snippet-body'>
-                <div class="container py-5">
-                    <div class="row text-center text-white mb-5">
-                        <div class="col-lg-7 mx-auto">
-                            <h1 class="display-4">Movie Search</h1>
-                        </div>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>IMDB Search</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript'
+        src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <link rel="stylesheet" href="styles.css">
+    <script type='text/javascript'></script>
 
-                        <form class="box">
-                            <input type="text" placeholder="Search for a movie" name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                        <ul class="list-group" id="results">
+</head>
 
-                        </ul>
-                        <script>
-
-                        </script>
-                        <script  type="text/javascript" src="app.js"></script>
-
-                    </div>
-                </div>
+<body oncontextmenu='return false' class='snippet-body'>
+    <div class="container py-5">
+        <div class="row text-center text-white mb-5">
+            <div class="col-lg-7 mx-auto">
+                <h1 class="display-4">Movie Search</h1>
             </div>
-        </div>
 
-    </body>
-    </html>
+            <form class="box">
+                <input type="text" placeholder="Search for a movie" name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div id="result_list" class="list">
+                <ul class="list-group" id="results">
+                </ul>
+            </div>
+
+            <script type="text/javascript" src="app.js"></script>
+        </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -53,7 +53,7 @@ form.box::after {
     display: table;
 }
 
-ul {
+.list {
     width: 75%;
     text-align:left;
     position: absolute;
