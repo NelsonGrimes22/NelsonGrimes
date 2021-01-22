@@ -1,5 +1,5 @@
 const express = require('express');
-const scraper = require('./movieScraper');
+const scraper = require('./js/movieScraper');
 const cors = require('cors')
 const app = express();
 const path = require('path');
@@ -7,13 +7,13 @@ const path = require('path');
 
 app.use(cors());
 app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: __dirname })
+    res.sendFile('html/index.html', { root: __dirname })
 });
 app.get('/app.js', (req, res) => {
-    res.sendFile('app.js', { root: __dirname })
+    res.sendFile('js/app.js', { root: __dirname })
 });
 app.get('/styles.css', (req, res) => {
-    res.sendFile('styles.css', { root: __dirname })
+    res.sendFile('css/styles.css', { root: __dirname })
 });
 app.get('/movie/:imdbID', (req, res) => {
     scraper.getMovie(req.params.imdbID)
@@ -22,10 +22,10 @@ app.get('/movie/:imdbID', (req, res) => {
         })
 });
 app.get('/movie.html', (req, res) => {
-    res.sendFile('movie.html', { root: __dirname })
+    res.sendFile('html/movie.html', { root: __dirname })
 });
 app.get('/movie.js', (req, res) => {
-    res.sendFile('movie.js', { root: __dirname })
+    res.sendFile('js/movie.js', { root: __dirname })
 });
 
 
