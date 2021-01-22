@@ -20,8 +20,6 @@ function getSearchResults(searchTerm) {
 }
 
 function showResults(results) {
-    console.log('here');
-    console.log(results);
     document.querySelectorAll("#results").forEach(e => e.parentNode.removeChild(e));
     const ul = document.createElement('ul');
     ul.className = 'list-group';
@@ -30,13 +28,14 @@ function showResults(results) {
     const resultsList = document.querySelector('#results');
     results.forEach(movie => {
         const li = document.createElement('li');
+        li.className = 'listBorder';
+        li.href = '/movie.html?imdbID=' + movie.imdbID;
         const img = document.createElement('img');
         img.src = movie.image;
         li.appendChild(img);
-
         const a = document.createElement('a');
         a.textContent = movie.title;
-        a.href = '/movie.html?imdbID=' + movie.imdbID
+        a.href = '/movie.html?imdbID=' + movie.imdbID;
         li.appendChild(a);
         resultsList.appendChild(li);
     });

@@ -19,19 +19,30 @@ function showMovie(movie) {
     document.getElementById('genre').textContent = 'Genre(s): ' + movie.genres.join(', ');
     document.getElementById('yearReleased').textContent = 'Year Released: ' + movie.yearReleased;
     document.getElementById('actors').textContent = 'Actors: ' + movie.actors.join(', ');
-    document.getElementById('director').textContent = 'Director(s): ' + movie.directors;
     document.getElementById('img').src = movie.image;
+    document.title = 'Movie Search ' + movie.title;
 
-    if(movie.rating){
+    if(movie.type == 'TV SHOW'){
+        document.getElementById('search').textContent = 'TV Show Search';
+    }else{
+        document.getElementById('search').textContent = 'Movie Search';
+    }
+
+    if (movie.directors.length > 1) {
+        document.getElementById('director').textContent = 'Director(s): ' + movie.directors.join(',');
+    } else {
+        document.getElementById('director').textContent = 'Director(s): ' + movie.directors;
+    }
+
+    if (movie.rating) {
         document.getElementById('rating').textContent = movie.rating + ' - ' + movie.runTime;
     } else {
-        if(movie.runTime){
+        if (movie.runTime) {
             document.getElementById('rating').textContent = 'No Rating' + ' - ' + movie.runTime;
         } else {
             document.getElementById('rating').textContent = '';
         }
     }
-
     for (let i = 0; i < Math.floor(rating); i++) {
         starsList.innerHTML += star_full;
     }
@@ -40,12 +51,12 @@ function showMovie(movie) {
     }
 
 }
-function stopLoading(){
+function stopLoading() {
     const loader = document.getElementById('loader');
     const body = document.getElementById('bodyStyle');
 
     loader.remove();
-    body.innerHTML = '<style> .movieBox  {opacity:100;}</style>';
+    body.innerHTML = '<style> .hide  {opacity:100;}</style>';
 
 }
 

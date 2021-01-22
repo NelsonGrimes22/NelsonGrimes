@@ -1,3 +1,21 @@
+.listBorder{
+    border-radius: 20px;
+    background-color: #6e2c8d;
+    background: linear-gradient(to right,  #ce9e1b, #953abe);
+
+    padding: 20px;
+    width: 800px;
+    height: 80px;
+    box-shadow: 0 0 0 2pt rgb(48, 48, 48);
+
+
+  }
+li.listBorder:hover {
+    background: linear-gradient(to right,  #8b6b13, #6a2988);
+}
+.hide {
+    opacity: 0;
+}
 .fontSize{
     font-size: 15px;
 }
@@ -5,7 +23,6 @@
     text-decoration: underline;
 }
 .movieBox {
-    opacity: 0;
     height: 370px;
 }
 body {
@@ -15,10 +32,7 @@ body {
 .text-gray {
     color: #aaa
 }
-/* img {
-    height: 182px;
-    width: 268px
-} */
+
 * {
     box-sizing: border-box;
 }
@@ -73,6 +87,9 @@ form.box::after {
 a {
     color: #ffffff;
     padding-left: 10px;
+}
+a:hover{
+    color: #953abe;
 }
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */

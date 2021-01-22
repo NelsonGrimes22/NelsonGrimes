@@ -4,11 +4,17 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const IMDB = 'https://www.imdb.com/';
 const movieURL = 'https://www.imdb.com/title/';
+const searchCache = [];
+const movieCache = [];
 
 // const url = 'https://www.imdb.com/find?s=tt&ref_=fn_al_tt_mr&q=';
 const url = 'https://www.imdb.com/find?s=tt&ref_=fn_tt_pop&q=';
 
 function searchMovies(searchTerm) {
+    if (searchCache[searchTerm]) {
+        return Promise.resolve(searchCache[searchTerm]);
+    }
+
     return fetch(`${url}${searchTerm}`)
         .then(response => response.text())
         .then(body => {
@@ -31,12 +37,18 @@ function searchMovies(searchTerm) {
                     movies.push(movie);
                 }
             });
-            // console.log(movies);
+            searchCache[searchTerm] = movies;
+            
             return movies;
         });
 }
 
 function getMovie(imdbID) {
+
+    if (movieCache[imdbID]) {
+        return Promise.resolve(movieCache[imdbID]);
+    }
+
     return fetch(`${movieURL}${imdbID}`)
         .then(response => response.text())
         .then(body => {
@@ -45,7 +57,9 @@ function getMovie(imdbID) {
             const $title = $('.title_wrapper').find('h1').text().trim();
             const $img = $('.poster a img').attr('src').trim();
 
-            const $rating = $('#titleStoryLine > div:nth-child(12) > span:nth-child(2)').text().split(' ')[1];
+            tmpRating = '';
+            $('#titleStoryLine > div:nth-child(12) > span:nth-child(2)').text()
+
             let rT = '';
             if ($('.txt-block time').text().split('min')[0]) {
                 rT = $('.txt-block time').text().split('min')[0] + 'min'
@@ -69,10 +83,35 @@ function getMovie(imdbID) {
             const $year = $('#titleDetails > div:nth-child(6)').text().trim().split('\n')[0].split(':')[1].trim();
             const $summary = $('.summary_text').text().trim();
             const $actors = [];
-            $('#title-overview-widget > div.plot_summary_wrapper > div.plot_summary > div:nth-child(4)').text().split('\n')[2].replace('|', "").split(',')
-                .forEach(element => {
-                    $actors.push(element.trim());
-                });
+            let type = '';
+            let tmpACT = []
+
+            // document.querySelector("#title-overview-widget > div.vital > div.button_panel.navigation_panel > a > div > div > div")
+
+
+
+            if ($('#title-overview-widget > div.plot_summary_wrapper > div.plot_summary > div:nth-child(4)') == "") {
+                //TV SHOW
+                type = 'TV SHOW';
+                tmpRating = $('#titleStoryLine > div:nth-child(12) > span:nth-child(2)').text();
+                $('#title-overview-widget > div.plot_summary_wrapper > div.plot_summary > div:nth-child(3)').text().split('\n')
+                    .forEach(element => {
+                        if (element != "") {
+                            tmpACT.push(element.trim());
+                        }
+                    });
+                    $actors.push(tmpACT[1].replace('|', '').trim().split(','));
+            } else { //MOVIE
+                type = 'MOVIE';
+                tmpRating = $('#titleStoryLine > div:nth-child(12) > span:nth-child(2)').text().split(' ')[1];
+                $('#title-overview-widget > div.plot_summary_wrapper > div.plot_summary > div:nth-child(4)').text().split('\n')[2].replace('|', "").split(',')
+                    .forEach(element => {
+                        $actors.push(element);
+                    });
+            }
+
+            const $rating = tmpRating;
+            console.log($rating);
             let tmpDir = [];
             const $directors = [];
 
@@ -98,9 +137,11 @@ function getMovie(imdbID) {
                 summary: $summary,
                 directors: $directors,
                 actors: $actors,
-                image: $img
+                image: $img,
+                type: type
             };
 
+            movieCache[imdbID] = movie;
 
             return movie;
         });
