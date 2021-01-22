@@ -11,10 +11,8 @@ function showMovie(movie) {
     const rating = movie.imdbRating / 2;
     const ratingDecimal = (rating - Math.floor(rating)).toFixed(1);
     const starsList = document.getElementById('stars');
-    const body = document.getElementById('bodyStyle');
     const star_full = '<li class="list-inline-item m-0"><i class="fa fa-star text-success"></i> </li> ';
     const star_half = '<li class="list-inline-item m-0"><i class="fa fa-star-half-o text-success"></i></li>';
-    const loader = document.getElementById('loader');
 
     document.getElementById('title').textContent = movie.title;
     document.getElementById('description').textContent = movie.summary;
@@ -40,9 +38,17 @@ function showMovie(movie) {
     if (.7 >= ratingDecimal >= .3) {
         starsList.innerHTML += star_half;
     }
+
+}
+function stopLoading(){
+    const loader = document.getElementById('loader');
+    const body = document.getElementById('bodyStyle');
+
     loader.remove();
     body.innerHTML = '<style> .movieBox  {opacity:100;}</style>';
+
 }
 
 getMovie(imdbID)
-    .then(showMovie);
+    .then(showMovie)
+    .then(stopLoading);
