@@ -5,7 +5,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
 const dbName = 'Reviews';
 
-
 async function insertReview() {
     try {
         await client.connect();
