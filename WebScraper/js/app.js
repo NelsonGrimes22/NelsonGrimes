@@ -1,4 +1,3 @@
-//Server can't find js file so typing in on html
 const form = document.querySelector('form');
 const searchInput = document.querySelector('input');
 const searchURL = 'http://localhost:3000/search/';

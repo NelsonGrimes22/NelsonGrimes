@@ -2,7 +2,6 @@ const express = require('express');
 const scraper = require('./js/movieScraper');
 const cors = require('cors')
 const app = express();
-const path = require('path');
 
 
 app.use(cors());

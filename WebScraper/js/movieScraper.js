@@ -2,7 +2,6 @@
 
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const IMDB = 'https://www.imdb.com/';
 const movieURL = 'https://www.imdb.com/title/';
 const searchCache = [];
 const movieCache = [];
