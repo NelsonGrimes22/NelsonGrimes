@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://NelsonG:Nelly!23@cluster0.fxsw4.mongodb.net/Reviews?retryWrites=true&w=majority";
+const api = require('./dbKey');
+const uri = api.getDB();
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 const dbName = 'Reviews';
